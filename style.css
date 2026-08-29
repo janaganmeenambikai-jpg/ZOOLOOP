@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+    background: #ffffff;
+    overflow-x: hidden;
+}
+body {
+    background: #ffffff;
+    color: #111111;
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   ZOOLOOP — SECTION PAW BACKGROUND SYSTEM
+   Every section gets its own animated paw wallpaper
+   ============================================================ */
+
+.paw-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #ffffff;
+}
+
+/* Individual animated paw background */
+.section-paw-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* Very subtle depth layer — NOT an opaque white overlay */
+.paw-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(0,0,0,0.04),
+            transparent 40%
+        );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Existing content stays above the video */
+.paw-section > *:not(.section-paw-video) {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =====================================================
+   WEBSITE CONTENT
+===================================================== */
+
+.site-content {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 8%;
+
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+
+    z-index: 1000;
+}
+
+
+.logo img {
+    height: 30px;
+    width: auto;
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    color: #222;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+
+.nav-links a:hover {
+    color: #2c7be5;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 120px 8% 50px;
+
+    /*
+       IMPORTANT:
+       Transparent white allows the paw video
+       to remain visible.
+    */
+    background: rgba(255, 255, 255, 0.35);
+}
+
+
+.hero-text {
+    max-width: 650px;
+
+    /*
+       Slight glass effect
+    */
+    background: rgba(255, 255, 255, 0.55);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+
+.hero-text h1 {
+    font-size: 60px;
+
+    line-height: 1.2;
+
+    color: #1e293b;
+}
+
+
+.hero-text span {
+    color: #2c7be5;
+}
+
+
+.hero-text p {
+    margin-top: 25px;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #555;
+}
+
+
+.btn {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    background: #2c7be5;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 15px 35px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(44, 123, 229, 0.25);
+}
+
+
+/* =====================================================
+   HERO IMAGES
+===================================================== */
+
+.hero-image {
+    position: relative;
+
+    width: 500px;
+    height: 500px;
+}
+
+
+.dog {
+    width: 120px;
+
+    position: absolute;
+
+    right: 0;
+    top: 20px;
+}
+
+
+.cat {
+    width: 120px;
+
+    position: absolute;
+
+    right: -40px;
+    bottom: 40px;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
+/* =====================================================
+   OTHER SECTIONS
+===================================================== */
+
+/*
+   If your other sections have backgrounds,
+   use transparent white instead of solid white.
+*/
+
+section {
+    position: relative;
+}
+
+
+/* Example for normal sections */
+
+.about,
+.product,
+.achievements,
+.contact {
+    background: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card {
+    background: rgba(255, 255, 255, 0.78);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    position: relative;
+
+    background: rgba(30, 30, 30, 0.94);
+
+    color: white;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 50px;
+
+        padding: 120px 5% 50px;
+    }
+
+    .hero-text {
+        padding: 30px 25px;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-image {
+        width: 300px;
+        height: 300px;
+    }
+
+}
