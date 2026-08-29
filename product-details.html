@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | ZooLoop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="circletrans.css">
+  <link rel="stylesheet" href="assets/css/responsive-core.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #222;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* PAW SECTION */
+    .paw-section {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #ffffff;
+    }
+
+    .section-paw-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .paw-section > *:not(.section-paw-video) {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* PRODUCT DETAILS HERO */
+    .product-details {
+      padding: 150px 8% 60px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .product-details h1 {
+      text-align: center;
+      font-size: clamp(30px, 4.5vw, 48px);
+      margin-bottom: 50px;
+      color: #111;
+      font-weight: 800;
+    }
+
+    .overview {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .overview-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .overview-image img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease;
+    }
+
+    .overview-image img:hover {
+      transform: scale(1.03);
+    }
+
+    .overview-content {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .overview-content h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      margin-bottom: 18px;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .overview-content p {
+      line-height: 1.85;
+      color: #4b5563;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    /* FEATURES GRID */
+    .features {
+      padding: 90px 8%;
+      background: linear-gradient(to bottom, #ffffff, #f8fafc);
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 44px);
+      margin-bottom: 15px;
+      color: #111;
+      font-weight: 800;
+    }
+
+    .features h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #111827;
+      margin: 14px auto 40px;
+      border-radius: 10px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .feature-box {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 34px 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+      border-color: #cbd5e1;
+    }
+
+    .feature-box h3 {
+      margin-bottom: 12px;
+      font-size: 19px;
+      color: #111827;
+      font-weight: 700;
+    }
+
+    .feature-box p {
+      line-height: 1.75;
+      color: #64748b;
+      font-size: 14.5px;
+    }
+
+    /* ACCORDION ADVANCED SPECS */
+    .accordion-section {
+      padding: 80px 8%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .accordion-section h2 {
+      text-align: center;
+      font-size: clamp(26px, 3.5vw, 40px);
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    .feature-accordion-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+
+    .feature-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 28px;
+      cursor: pointer;
+      background: #fafafa;
+      user-select: none;
+      transition: background 0.3s;
+    }
+
+    .feature-header:hover {
+      background: #f3f4f6;
+    }
+
+    .feature-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .feature-header span {
+      font-size: 14px;
+      color: #6b7280;
+      transition: transform 0.35s ease;
+    }
+
+    .feature-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 28px;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .feature-card.active .feature-header span {
+      transform: rotate(180deg);
+    }
+
+    .feature-card.active .feature-content {
+      max-height: 350px;
+      padding: 20px 28px 25px;
+    }
+
+    .feature-content ul {
+      list-style: none;
+    }
+
+    .feature-content li {
+      margin-bottom: 10px;
+      color: #4b5563;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-content li i {
+      color: #22c55e;
+      font-size: 14px;
+    }
+
+    /* 3D ROTATING STATS CAROUSEL - RESPONSIVE WITH CENTER 3D PRODUCT */
+    .carousel-section {
+      min-height: 480px;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      perspective: 1200px;
+      overflow: hidden;
+      position: relative;
+      background: radial-gradient(circle at center, #1e293b 0%, #0f172a 60%, #080d1a 100%);
+      margin: 40px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .carousel-title {
+      text-align: center;
+      color: #ffffff;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 800;
+      margin-bottom: 50px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .carousel-title span {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+    }
+
+    /* CENTER 3D ROTATING PRODUCT */
+    .carousel-center-product {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 240px;
+      height: 240px;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      pointer-events: auto;
+      transform-style: preserve-3d;
+    }
+
+    .center-product-glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 70%);
+      filter: blur(25px);
+      animation: pulseGlow 4s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .center-product-pedestal {
+      position: absolute;
+      bottom: 20px;
+      width: 160px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.45) 0%, rgba(56, 189, 248, 0.2) 50%, transparent 75%);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.6);
+      transform: rotateX(75deg);
+      animation: pedestalPulse 3s ease-in-out infinite alternate;
+    }
+
+    .center-product-img-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+      animation: rotate3DFullCollar 12s linear infinite, floatProduct 4s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .carousel-center-product img {
+      width: 220px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 25px rgba(56, 189, 248, 0.55));
+      transition: filter 0.4s ease, transform 0.4s ease;
+      cursor: pointer;
+      pointer-events: auto;
+      user-select: none;
+    }
+
+    .carousel-center-product:hover .center-product-img-wrapper {
+      animation-play-state: paused;
+    }
+
+    .carousel-center-product:hover img {
+      transform: scale(1.18);
+      filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 35px rgba(34, 197, 94, 0.85));
+    }
+
+    .center-product-badge {
+      position: absolute;
+      bottom: -15px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 12px rgba(56, 189, 248, 0.3);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 15;
+    }
+
+    .center-product-badge .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+      animation: blinkDot 1.5s ease-in-out infinite;
+    }
+
+    @keyframes floatProduct {
+      0% { transform: translateY(-10px); }
+      100% { transform: translateY(10px); }
+    }
+
+    @keyframes rotate3DFullCollar {
+      0% {
+        transform: rotateY(0deg) rotateX(10deg) rotateZ(0deg);
+      }
+      25% {
+        transform: rotateY(90deg) rotateX(4deg) rotateZ(-3deg) scale(0.92);
+      }
+      50% {
+        transform: rotateY(180deg) rotateX(-8deg) rotateZ(0deg) scale(0.85);
+      }
+      75% {
+        transform: rotateY(270deg) rotateX(4deg) rotateZ(3deg) scale(0.92);
+      }
+      100% {
+        transform: rotateY(360deg) rotateX(10deg) rotateZ(0deg);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.5; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    @keyframes pedestalPulse {
+      0% { opacity: 0.5; transform: rotateX(75deg) scale(0.9); }
+      100% { opacity: 1; transform: rotateX(75deg) scale(1.15); }
+    }
+
+    @keyframes blinkDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 220px;
+      height: 160px;
+      transform-style: preserve-3d;
+      animation: rotateCarousel 20s linear infinite;
+    }
+
+    .carousel-container:hover {
+      animation-play-state: paused;
+    }
+
+    .carousel-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 22px 18px;
+      text-align: center;
+      color: white;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .carousel-card:hover {
+      border-color: #38bdf8;
+    }
+
+    .carousel-card i {
+      font-size: 24px;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    .carousel-card h3 {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 4px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .carousel-card p {
+      font-size: 13.5px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .carousel-card:nth-child(1) { transform: rotateY(0deg) translateZ(320px); }
+    .carousel-card:nth-child(2) { transform: rotateY(72deg) translateZ(320px); }
+    .carousel-card:nth-child(3) { transform: rotateY(144deg) translateZ(320px); }
+    .carousel-card:nth-child(4) { transform: rotateY(216deg) translateZ(320px); }
+    .carousel-card:nth-child(5) { transform: rotateY(288deg) translateZ(320px); }
+
+    @keyframes rotateCarousel {
+      from { transform: rotateY(0deg); }
+      to   { transform: rotateY(360deg); }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fafafa;
+      border-top: 1px solid #e5e7eb;
+      padding: 70px 8% 30px;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-brand { max-width: 340px; }
+    .footer-brand .logo-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    .footer-links h4, .footer-contact h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #111827;
+      margin-bottom: 18px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14.5px;
+      color: #4b5563;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: #000000; font-weight: 600; }
+
+    .footer-contact p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }
+    .footer-contact p strong { color: #111827; font-weight: 600; }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-row a {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 16px;
+      color: #374151;
+      transition: all 0.3s ease;
+    }
+    .social-row a:hover {
+      background: #111827;
+      border-color: #111827;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      margin-top: 40px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .footer-bottom p {
+      font-size: 13.5px;
+      color: #6b7280;
+    }
+    .footer-tagline {
+      font-style: italic;
+      color: #9ca3af;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 991px) {
+      .overview {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .carousel-wrapper {
+        height: 280px;
+      }
+      .carousel-center-product {
+        width: 190px;
+        height: 190px;
+      }
+      .carousel-center-product img {
+        width: 170px;
+      }
+      .center-product-glow {
+        width: 140px;
+        height: 140px;
+      }
+      .carousel-container {
+        width: 170px;
+        height: 130px;
+      }
+      .carousel-card {
+        padding: 14px 10px;
+      }
+      .carousel-card h3 { font-size: 19px; }
+      .carousel-card p { font-size: 12px; }
+      .carousel-card i { font-size: 20px; margin-bottom: 4px; }
+      .carousel-card:nth-child(1) { transform: rotateY(0deg) translateZ(240px); }
+      .carousel-card:nth-child(2) { transform: rotateY(72deg) translateZ(240px); }
+      .carousel-card:nth-child(3) { transform: rotateY(144deg) translateZ(240px); }
+      .carousel-card:nth-child(4) { transform: rotateY(216deg) translateZ(240px); }
+      .carousel-card:nth-child(5) { transform: rotateY(288deg) translateZ(240px); }
+    }
+
+    @media (max-width: 640px) {
+      .product-details {
+        padding: 120px 6% 40px;
+      }
+      .features, .accordion-section {
+        padding: 60px 5%;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .carousel-section {
+        min-height: 420px;
+        padding: 40px 10px;
+      }
+      .carousel-wrapper {
+        height: 250px;
+      }
+      .carousel-center-product {
+        width: 140px;
+        height: 140px;
+      }
+      .carousel-center-product img {
+        width: 130px;
+      }
+      .center-product-glow {
+        width: 100px;
+        height: 100px;
+      }
+      .center-product-badge {
+        font-size: 9px;
+        padding: 2px 8px;
+        bottom: -10px;
+      }
+      .carousel-container {
+        width: 130px;
+        height: 105px;
+      }
+      .carousel-card {
+        padding: 10px 8px;
+      }
+      .carousel-card h3 { font-size: 16px; margin-bottom: 2px; }
+      .carousel-card p { font-size: 10.5px; }
+      .carousel-card i { font-size: 16px; margin-bottom: 3px; }
+      .carousel-card:nth-child(1) { transform: rotateY(0deg) translateZ(170px); }
+      .carousel-card:nth-child(2) { transform: rotateY(72deg) translateZ(170px); }
+      .carousel-card:nth-child(3) { transform: rotateY(144deg) translateZ(170px); }
+      .carousel-card:nth-child(4) { transform: rotateY(216deg) translateZ(170px); }
+      .carousel-card:nth-child(5) { transform: rotateY(288deg) translateZ(170px); }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo" aria-label="ZooLoop Home">
+      <img src="assets/images/ZooLoopTRANS.png" alt="ZooLoop Logo">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="product.html" class="active">Product</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="mobile-cta-wrapper">
+        <a href="product.html" class="nav-cta">Explore Product</a>
+      </li>
+    </ul>
+
+
+
+    <button class="hamburger" aria-label="Toggle navigation menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- PRODUCT OVERVIEW -->
+  <section class="product-details paw-section">
+    <video class="section-paw-video" autoplay muted loop playsinline preload="metadata">
+      <source src="assets/video/background_video.mp4" type="video/mp4">
+    </video>
+
+    <h1>ZooLoop Smart Pet Monitoring System</h1>
+
+    <div class="overview">
+      <div class="overview-image">
+        <img src="assets/images/paw_collar_product.png" alt="ZooLoop Paw Neck Collar Smart Pet Monitoring Device">
+      </div>
+
+      <div class="overview-content">
+        <h2>Intelligent Wellness Platform</h2>
+        <p>
+          ZooLoop Smart Pet Monitoring System is an intelligent pet monitoring and wellness system designed to provide real-time health insights, activity tracking, behavioral analysis, and proactive pet care assistance through smart sensing technologies and AI-powered analytics.
+        </p>
+        <p>
+          Engineered with ergonomic lightweight materials, non-invasive bio-sensors, and multi-network connectivity, ZooLoop keeps you seamlessly connected to your pet's well-being 24/7.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY FEATURES -->
+  <section class="features">
+    <h2>Key Capabilities</h2>
+
+    <div class="feature-grid">
+      <div class="feature-box">
+        <h3>Real-Time Vitals</h3>
+        <p>Continuous tracking of heart rate variability, body temperature, and respiratory trends with instant anomaly detection.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Activity Intelligence</h3>
+        <p>Precision step metrics, caloric expenditure, and rest-cycle profiling customized for your pet's age and breed.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Behavioral AI</h3>
+        <p>Advanced algorithmic detection of scratching, shaking, restlessness, and stress indicators weeks before symptoms become severe.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>GPS & Geofencing</h3>
+        <p>High-accuracy GPS tracking with custom safe zones and instant boundary escape notifications sent to your smartphone.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Vet-Ready Reports</h3>
+        <p>One-click comprehensive clinical summaries and historical graphs ready to export directly to your veterinarian.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Long Battery Life</h3>
+        <p>Ultra-efficient power management delivering up to 14 days of continuous monitoring on a single quick-charge cycle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCORDION DETAILED SPECS -->
+  <section class="accordion-section">
+    <h2>System Architecture & Modules</h2>
+
+    <div class="feature-accordion-list">
+      <div class="feature-card">
+        <div class="feature-header">
+          <h3>HM — Health Monitoring Module</h3>
+          <span>▼</span>
+        </div>
+        <div class="feature-content">
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Continuous heart rate & pulse rhythm tracking</li>
+            <li><i class="fas fa-check-circle"></i> Skin and ambient temperature sensor arrays</li>
+            <li><i class="fas fa-check-circle"></i> Respiratory baseline pattern profiling</li>
+            <li><i class="fas fa-check-circle"></i> Clinical vital anomaly thresholds & notifications</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-header">
+          <h3>AT — Activity Tracking Module</h3>
+          <span>▼</span>
+        </div>
+        <div class="feature-content">
+          <ul>
+            <li><i class="fas fa-check-circle"></i> 6-axis IMU precision motion sensing</li>
+            <li><i class="fas fa-check-circle"></i> Active play vs. rest cycle automated logging</li>
+            <li><i class="fas fa-check-circle"></i> Breed-calibrated daily exertion targets</li>
+            <li><i class="fas fa-check-circle"></i> Historical activity comparison charts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-header">
+          <h3>BA — Behavior Analysis Module</h3>
+          <span>▼</span>
+        </div>
+        <div class="feature-content">
+          <ul>
+            <li><i class="fas fa-check-circle"></i> On-device machine learning behavior classification</li>
+            <li><i class="fas fa-check-circle"></i> Excessive scratching and head shaking alert</li>
+            <li><i class="fas fa-check-circle"></i> Sleep disturbance and anxiety recognition</li>
+            <li><i class="fas fa-check-circle"></i> Wellness recommendation engine</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-header">
+          <h3>CC — Cloud & Vet Connectivity</h3>
+          <span>▼</span>
+        </div>
+        <div class="feature-content">
+          <ul>
+            <li><i class="fas fa-check-circle"></i> End-to-end encrypted cloud synchronization</li>
+            <li><i class="fas fa-check-circle"></i> Multi-user family and caretaker sharing</li>
+            <li><i class="fas fa-check-circle"></i> Automated monthly PDF vet health export</li>
+            <li><i class="fas fa-check-circle"></i> RESTful API integration for veterinary clinics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D STATS CAROUSEL WITH CENTER 3D PAW NECK COLLAR -->
+  <section class="carousel-section">
+    <h2 class="carousel-title">ZooLoop <span>Paw Collar Architecture</span></h2>
+    
+    <div class="carousel-wrapper">
+      <!-- CENTER 3D ROTATING PRODUCT -->
+      <div class="carousel-center-product">
+        <div class="center-product-glow"></div>
+        <div class="center-product-pedestal"></div>
+        <div class="center-product-img-wrapper">
+          <img src="assets/images/paw_collar_product.png" alt="ZooLoop 3D Smart Paw Neck Collar Product">
+        </div>
+        <div class="center-product-badge">
+          <span class="live-dot"></span> Active Device
+        </div>
+      </div>
+
+      <!-- 3D ROTATING ORBITING CARDS -->
+      <div class="carousel-container">
+        <div class="carousel-card">
+          <i class="fas fa-heart-pulse"></i>
+          <h3>24/7</h3>
+          <p>Live Vitals</p>
+        </div>
+
+        <div class="carousel-card">
+          <i class="fas fa-brain"></i>
+          <h3>AI</h3>
+          <p>Health Insights</p>
+        </div>
+
+        <div class="carousel-card">
+          <i class="fas fa-cloud-arrow-up"></i>
+          <h3>Cloud</h3>
+          <p>Secure Sync</p>
+        </div>
+
+        <div class="carousel-card">
+          <i class="fas fa-bullseye"></i>
+          <h3>99.2%</h3>
+          <p>Bio Accuracy</p>
+        </div>
+
+        <div class="carousel-card">
+          <i class="fas fa-location-dot"></i>
+          <h3>GPS</h3>
+          <p>Safe Geofencing</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-name">ZooLoop</span>
+          <p>Smart pet healthcare monitoring — built in Tamil Nadu, trusted everywhere pets are loved.</p>
+          <div class="social-row">
+            <a href="https://www.instagram.com/_zooloop_?igsh=MXNkbmNyeTI0b3lxbQ==" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/z00l00p/" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/919003569857" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><strong>Location</strong><br>Natham, Dindigul, Tamil Nadu, India</p>
+          <p style="margin-top:12px;"><strong>Phone</strong><br>+91 90035 69857</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 ZooLoop. All rights reserved.</p>
+        <p class="footer-tagline">Because every bark, step, and heartbeat tells a story.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/nav.js"></script>
+  <script>
+    // Accordion Toggle
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+      const header = card.querySelector('.feature-header');
+      if (header) {
+        header.addEventListener('click', () => {
+          card.classList.toggle('active');
+        });
+      }
+    });
+
+    // 3D Collar Interactive Mouse Track
+    const centerProduct = document.querySelector('.carousel-center-product');
+    const productWrapper = document.querySelector('.center-product-img-wrapper');
+    if (centerProduct && productWrapper) {
+      centerProduct.addEventListener('mousemove', (e) => {
+        const rect = centerProduct.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        productWrapper.style.transform = `rotateY(${x * 60}deg) rotateX(${-y * 40}deg) scale(1.15)`;
+      });
+      centerProduct.addEventListener('mouseleave', () => {
+        productWrapper.style.transform = '';
+      });
+    }
+  </script>
+</body>
+
+</html>

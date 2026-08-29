@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | ZooLoop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="circletrans.css">
+  <link rel="stylesheet" href="assets/css/responsive-core.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #fdfdfd;
+      color: #222;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* ABOUT HERO */
+    .about-hero {
+      padding: 160px 8% 70px;
+      text-align: center;
+      background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+      position: relative;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      margin-bottom: 16px;
+      color: #111;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .about-hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* LEADERSHIP */
+    .leadership {
+      padding: 60px 8% 80px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .leader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      background: #ffffff;
+      padding: 40px;
+      margin-bottom: 50px;
+      border-radius: 24px;
+      border: 1px solid #edf0f2;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.35s ease;
+    }
+
+    .leader:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .leader-image {
+      flex: 0 0 280px;
+      text-align: center;
+    }
+
+    .leader-image img {
+      width: 260px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .leader-image img:hover {
+      transform: scale(1.03);
+    }
+
+    .leader-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .leader-content h2 {
+      font-size: clamp(24px, 3.5vw, 32px);
+      margin-bottom: 6px;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .leader-content h4 {
+      color: #2563eb;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .leader-content p {
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    /* TEAM */
+    .team {
+      padding: 90px 8%;
+      background: #f8fafc;
+      text-align: center;
+    }
+
+    .team-content {
+      max-width: 840px;
+      margin: 0 auto 40px;
+    }
+
+    .team-content h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      margin-bottom: 16px;
+      color: #111;
+      font-weight: 800;
+    }
+
+    .team-content p {
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: #4b5563;
+      margin-bottom: 14px;
+    }
+
+    .team-image {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .team-image img {
+      width: 100%;
+      max-width: 820px;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .team-image img:hover {
+      transform: translateY(-5px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fafafa;
+      border-top: 1px solid #e5e7eb;
+      padding: 70px 8% 30px;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-brand { max-width: 340px; }
+    .footer-brand .logo-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    .footer-links h4, .footer-contact h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #111827;
+      margin-bottom: 18px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14.5px;
+      color: #4b5563;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: #000000; font-weight: 600; }
+
+    .footer-contact p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }
+    .footer-contact p strong { color: #111827; font-weight: 600; }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-row a {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 16px;
+      color: #374151;
+      transition: all 0.3s ease;
+    }
+    .social-row a:hover {
+      background: #111827;
+      border-color: #111827;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      margin-top: 40px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .footer-bottom p {
+      font-size: 13.5px;
+      color: #6b7280;
+    }
+    .footer-tagline {
+      font-style: italic;
+      color: #9ca3af;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .leader {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 25px;
+        padding: 30px 20px;
+      }
+      .leader-content {
+        text-align: center;
+      }
+      .leader-image {
+        flex: unset;
+      }
+      .leader-image img {
+        width: 220px;
+        height: 270px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-hero {
+        padding: 130px 6% 50px;
+      }
+      .leadership, .team {
+        padding: 40px 5%;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo" aria-label="ZooLoop Home">
+      <img src="assets/images/ZooLoopTRANS.png" alt="ZooLoop Logo">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="mobile-cta-wrapper">
+        <a href="product.html" class="nav-cta">Explore Product</a>
+      </li>
+    </ul>
+
+
+
+    <button class="hamburger" aria-label="Toggle navigation menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+    <h1>About ZooLoop</h1>
+    <p>
+      Transforming the future of pet care through intelligent technology, innovation, and data-driven solutions.
+    </p>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="leadership">
+    <!-- Founder -->
+    <div class="leader founder-card">
+      <div class="leader-image">
+        <img src="assets/images/Founder.jpeg" alt="Founder - Janagan A">
+      </div>
+      <div class="leader-content">
+        <h2>Mr. Janagan A</h2>
+        <h4>Founder & Product Lead</h4>
+        <p>
+          Janagan A is the Founder of ZooLoop Innovations Pvt. Ltd., dedicated to redefining pet care through intelligent engineering and innovation.
+        </p>
+        <p>
+          His vision is to build smart technologies that improve pet healthcare, enable proactive detection of medical issues, and strengthen the bond between pets and their caretakers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Co-Founder -->
+    <div class="leader cofounder-card">
+      <div class="leader-image">
+        <img src="assets/images/COFOUNDER.jpeg" alt="Co-Founder">
+      </div>
+      <div class="leader-content">
+        <h2>Co-Founder</h2>
+        <h4>Co-Founder & Technology Lead</h4>
+        <p>
+          Leading the technical architecture, embedded hardware systems, and sensor engineering at ZooLoop Innovations.
+        </p>
+        <p>
+          Passionate about building scalable IoT architectures, machine learning models for pet behavior tracking, and robust cloud data pipelines.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team">
+    <div class="team-content">
+      <h2>Our Team</h2>
+      <p>
+        ZooLoop is powered by a passionate team of innovators working together across research, product development, hardware design, testing, and intelligent software implementation.
+      </p>
+      <p>
+        Our multidisciplinary team combines expertise from engineering, embedded systems, software development, user experience design, and product validation to transform innovative ideas into practical solutions.
+      </p>
+    </div>
+
+    <div class="team-image">
+      <img src="assets/images/ZOOLOOPTEAM.jpeg" alt="ZooLoop Team">
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-name">ZooLoop</span>
+          <p>Smart pet healthcare monitoring — built in Tamil Nadu, trusted everywhere pets are loved.</p>
+          <div class="social-row">
+            <a href="https://www.instagram.com/_zooloop_?igsh=MXNkbmNyeTI0b3lxbQ==" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/z00l00p/" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/919003569857" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><strong>Location</strong><br>Natham, Dindigul, Tamil Nadu, India</p>
+          <p style="margin-top:12px;"><strong>Phone</strong><br>+91 90035 69857</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 ZooLoop. All rights reserved.</p>
+        <p class="footer-tagline">Because every bark, step, and heartbeat tells a story.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/nav.js"></script>
+</body>
+
+</html>

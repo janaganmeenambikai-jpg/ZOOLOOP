@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | ZooLoop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="circletrans.css">
+  <link rel="stylesheet" href="assets/css/responsive-core.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #222;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* PAW BACKGROUND */
+    .contact-paw-section {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #ffffff;
+    }
+
+    .contact-paw-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .contact-paw-section > *:not(.contact-paw-video) {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* CONTACT HERO */
+    .contact-hero {
+      padding: 150px 8% 50px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      margin-bottom: 16px;
+      color: #111;
+      font-weight: 800;
+    }
+
+    .contact-hero p {
+      line-height: 1.8;
+      color: #555;
+      font-size: clamp(15px, 1.8vw, 17px);
+    }
+
+    /* QUICK CONTACT CARDS */
+    .quick-contact {
+      max-width: 1240px;
+      margin: 0 auto 50px;
+      padding: 0 8%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .quick-card {
+      background: #ffffff;
+      padding: 34px 26px;
+      border-radius: 22px;
+      text-align: center;
+      border: 1px solid #edf0f2;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quick-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .quick-card i {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #2563eb;
+    }
+
+    .quick-card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .quick-card p, .quick-card a {
+      color: #555;
+      line-height: 1.7;
+      font-size: 14.5px;
+      text-decoration: none;
+    }
+
+    .quick-card a:hover {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    /* MAIN CONTACT CONTAINER */
+    .contact-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 8% 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .contact-info {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      color: #ffffff;
+      padding: 44px 38px;
+      border-radius: 26px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(26px, 3.5vw, 36px);
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .info-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #93c5fd;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-item p, .info-item a {
+      color: #e5e7eb;
+      font-size: 15px;
+      line-height: 1.7;
+      text-decoration: none;
+    }
+
+    .info-item a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 32px;
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-icons a {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .social-icons a:hover {
+      background: #ffffff;
+      color: #111827;
+      transform: translateY(-3px);
+    }
+
+    /* CONTACT FORM */
+    .contact-form {
+      background: #ffffff;
+      padding: 44px 38px;
+      border-radius: 26px;
+      border: 1px solid #edf0f2;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-form h2 {
+      font-size: clamp(24px, 3.5vw, 32px);
+      margin-bottom: 12px;
+      color: #111;
+      font-weight: 800;
+    }
+
+    .contact-form p {
+      color: #64748b;
+      margin-bottom: 24px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
+      background: #fdfdfd;
+      font-family: inherit;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      background: #ffffff;
+    }
+
+    .form-group textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .contact-form button:hover {
+      background: #374151;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* FAQ SECTION */
+    .faq-section {
+      padding: 80px 8%;
+      background: #f8fafc;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .faq-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: #111;
+    }
+
+    .faq-container {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px 26px;
+      border: none;
+      outline: none;
+      background: #ffffff;
+      text-align: left;
+      font-size: 17px;
+      font-weight: 700;
+      color: #111;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: #f9fafb;
+    }
+
+    .faq-icon {
+      font-size: 20px;
+      font-weight: 400;
+      transition: transform 0.35s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 26px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #4b5563;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 400px;
+      padding: 0 26px 22px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fafafa;
+      border-top: 1px solid #e5e7eb;
+      padding: 70px 8% 30px;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-brand { max-width: 340px; }
+    .footer-brand .logo-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    .footer-links h4, .footer-contact h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #111827;
+      margin-bottom: 18px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14.5px;
+      color: #4b5563;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: #000000; font-weight: 600; }
+
+    .footer-contact p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }
+    .footer-contact p strong { color: #111827; font-weight: 600; }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-row a {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 16px;
+      color: #374151;
+      transition: all 0.3s ease;
+    }
+    .social-row a:hover {
+      background: #111827;
+      border-color: #111827;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      margin-top: 40px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .footer-bottom p {
+      font-size: 13.5px;
+      color: #6b7280;
+    }
+    .footer-tagline {
+      font-style: italic;
+      color: #9ca3af;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 991px) {
+      .quick-contact {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .contact-hero {
+        padding: 130px 6% 35px;
+      }
+      .contact-info, .contact-form {
+        padding: 30px 20px;
+      }
+      .contact-form button {
+        width: 100%;
+        text-align: center;
+      }
+      .faq-section {
+        padding: 60px 5%;
+      }
+      .faq-question {
+        font-size: 15px;
+        padding: 16px 20px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo" aria-label="ZooLoop Home">
+      <img src="assets/images/ZooLoopTRANS.png" alt="ZooLoop Logo">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li class="mobile-cta-wrapper">
+        <a href="product.html" class="nav-cta">Get Started</a>
+      </li>
+    </ul>
+
+
+
+    <button class="hamburger" aria-label="Toggle navigation menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="contact-hero contact-paw-section">
+    <video class="contact-paw-video" autoplay muted loop playsinline preload="metadata">
+      <source src="assets/video/background_video.mp4" type="video/mp4">
+    </video>
+
+    <h1>Let's Connect</h1>
+    <p>
+      Whether you're a pet parent, veterinarian, technology enthusiast, potential partner, or investor, we would love to hear from you. Connect with ZooLoop and help shape the future of smart pet care.
+    </p>
+  </section>
+
+  <!-- QUICK CONTACT CARDS -->
+  <section class="quick-contact">
+    <div class="quick-card">
+      <i class="fas fa-location-dot"></i>
+      <h3>Location</h3>
+      <a href="https://maps.app.goo.gl/2kGgPbfCCqEViGcZ7" target="_blank">
+        NPR College of Engineering and Technology,<br>
+        Natham, Dindigul, Tamil Nadu – 624401
+      </a>
+    </div>
+
+    <div class="quick-card">
+      <i class="fas fa-handshake"></i>
+      <h3>Collaborations</h3>
+      <p>Open to partnerships, clinical trials, and hardware integration opportunities.</p>
+    </div>
+
+    <div class="quick-card">
+      <i class="fas fa-paw"></i>
+      <h3>Pet Innovation</h3>
+      <p>Building smarter solutions for preventative veterinary healthcare and wellness.</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT CONTAINER -->
+  <section class="contact-container">
+    <!-- LEFT SIDE INFO -->
+    <div class="contact-info">
+      <div>
+        <h2>Get In Touch</h2>
+        <div class="info-list">
+          <div class="info-item">
+            <h4><i class="fas fa-location-dot"></i> Address</h4>
+            <a href="https://maps.app.goo.gl/2kGgPbfCCqEViGcZ7" target="_blank">
+              NPR College of Engineering and Technology, Natham, Dindigul, Tamil Nadu – 624401
+            </a>
+          </div>
+
+          <div class="info-item">
+            <h4><i class="fas fa-phone"></i> Phone</h4>
+            <p><a href="tel:+919003569857">+91 90035 69857</a></p>
+          </div>
+
+          <div class="info-item">
+            <h4><i class="fas fa-building"></i> Company</h4>
+            <p>ZooLoop Innovations Pvt. Ltd.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-icons">
+        <a href="https://www.instagram.com/_zooloop_?igsh=MXNkbmNyeTI0b3lxbQ==" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/z00l00p/" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://wa.me/919003569857" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <p>Have questions or collaboration inquiries? Drop us a note below.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will contact you soon.');">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name" required>
+        </div>
+
+        <div class="form-group">
+          <input type="email" placeholder="Your Email Address" required>
+        </div>
+
+        <div class="form-group">
+          <textarea placeholder="Your Message or Inquiry..." required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>1. What is ZooLoop?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          ZooLoop is a smart animal-monitoring technology platform designed to make animal care more intelligent, connected, and data-driven. It combines sensors, computer vision, IoT, and analytics to help monitor animal activity, environment, health indicators, and safety.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>2. What problem does ZooLoop solve?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          ZooLoop aims to reduce the challenges involved in continuous animal monitoring. It helps caregivers access meaningful, real-time information and identify unusual conditions or behavioral changes more efficiently.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>3. Who can use ZooLoop?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          ZooLoop can be useful for: Zoos and wildlife parks · Animal shelters and rescue organizations · Veterinary and animal-care facilities · Research institutions · Farms and specialized animal facilities · Organizations involved in animal welfare and conservation.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>4. How does ZooLoop monitor animals?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          ZooLoop uses a combination of sensors, edge computing, IoT connectivity, and software analytics to collect and process relevant information about animals and their surroundings.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>5. Can ZooLoop monitor animals in real time?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. The system is designed to collect and transmit data continuously, allowing authorized users to monitor important parameters and receive alerts when predefined conditions are detected.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>6. Can organizations request a customized ZooLoop solution?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. ZooLoop can explore customized configurations based on the organization's animal species, facility, monitoring requirements, infrastructure, and operational needs.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>7. How can I collaborate with ZooLoop?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Organizations interested in pilot projects, research collaboration, technology partnerships, animal-care applications, or product deployment can contact the ZooLoop team to discuss their requirements.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-name">ZooLoop</span>
+          <p>Smart pet healthcare monitoring — built in Tamil Nadu, trusted everywhere pets are loved.</p>
+          <div class="social-row">
+            <a href="https://www.instagram.com/_zooloop_?igsh=MXNkbmNyeTI0b3lxbQ==" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/z00l00p/" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/919003569857" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><strong>Location</strong><br>Natham, Dindigul, Tamil Nadu, India</p>
+          <p style="margin-top:12px;"><strong>Phone</strong><br>+91 90035 69857</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 ZooLoop. All rights reserved.</p>
+        <p class="footer-tagline">Because every bark, step, and heartbeat tells a story.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/nav.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

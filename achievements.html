@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements | ZooLoop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="circletrans.css">
+  <link rel="stylesheet" href="assets/css/responsive-core.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f8f9fb;
+      color: #222;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* HERO SECTION */
+    .achievements-hero {
+      padding: 150px 8% 40px;
+      text-align: center;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .achievements-hero h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      margin-bottom: 16px;
+      color: #111;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #555;
+      max-width: 780px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      font-size: clamp(15px, 1.8vw, 17px);
+    }
+
+    /* HORIZONTAL SCROLLING GALLERY */
+    .horizontal-gallery {
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0 40px;
+      position: relative;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: scrollGallery 30s linear infinite;
+    }
+
+    .gallery-track img {
+      width: clamp(280px, 35vw, 460px);
+      height: clamp(190px, 25vw, 300px);
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-track img:hover {
+      transform: scale(1.04);
+    }
+
+    @keyframes scrollGallery {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* SHOWCASE SECTION */
+    .achievement-showcase {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 60px 8%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .showcase-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .showcase-image img {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease;
+    }
+
+    .showcase-image img:hover {
+      transform: scale(1.02);
+    }
+
+    .showcase-content {
+      flex: 1;
+      max-width: 580px;
+    }
+
+    .showcase-content span {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2563eb;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .showcase-content h2 {
+      font-size: clamp(26px, 3.5vw, 36px);
+      margin-bottom: 20px;
+      color: #111;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .showcase-content p {
+      color: #4b5563;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      font-size: 15.5px;
+    }
+
+    .highlight-name {
+      font-weight: 700;
+      color: #1f8f70;
+    }
+
+    /* BENTO ACHIEVEMENTS GRID */
+    .bento-section {
+      padding: 60px 8% 100px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .bento-section h2 {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+
+    .bento-achievements {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .bento-card {
+      background: #ffffff;
+      padding: 36px 30px;
+      border-radius: 24px;
+      border: 1px solid #edf0f2;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 100px;
+      height: 100px;
+      background: rgba(37, 99, 235, 0.05);
+      border-radius: 50%;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .bento-card .icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .bento-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .bento-card p {
+      color: #64748b;
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+
+    .large {
+      grid-column: span 2;
+    }
+
+    .wide {
+      grid-column: span 3;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fafafa;
+      border-top: 1px solid #e5e7eb;
+      padding: 70px 8% 30px;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-brand { max-width: 340px; }
+    .footer-brand .logo-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+    .footer-links h4, .footer-contact h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #111827;
+      margin-bottom: 18px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14.5px;
+      color: #4b5563;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: #000000; font-weight: 600; }
+
+    .footer-contact p {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }
+    .footer-contact p strong { color: #111827; font-weight: 600; }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-row a {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 16px;
+      color: #374151;
+      transition: all 0.3s ease;
+    }
+    .social-row a:hover {
+      background: #111827;
+      border-color: #111827;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      margin-top: 40px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .footer-bottom p {
+      font-size: 13.5px;
+      color: #6b7280;
+    }
+    .footer-tagline {
+      font-style: italic;
+      color: #9ca3af;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 991px) {
+      .achievement-showcase {
+        flex-direction: column;
+        text-align: center;
+        gap: 35px;
+      }
+      .showcase-content {
+        max-width: 100%;
+      }
+      .bento-achievements {
+        grid-template-columns: 1fr;
+      }
+      .large, .wide {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .achievements-hero {
+        padding: 130px 6% 30px;
+      }
+      .achievement-showcase, .bento-section {
+        padding: 40px 5%;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo" aria-label="ZooLoop Home">
+      <img src="assets/images/ZooLoopTRANS.png" alt="ZooLoop Logo">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="achievements.html" class="active">Achievements</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="mobile-cta-wrapper">
+        <a href="product.html" class="nav-cta">Explore Product</a>
+      </li>
+    </ul>
+
+
+
+    <button class="hamburger" aria-label="Toggle navigation menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- HERO & INTRO -->
+  <section class="achievements-hero">
+    <h1>Our Achievements</h1>
+    <p class="subtitle">
+      Celebrating milestones that reflect our commitment to innovation, technology, and the future of intelligent pet care.
+    </p>
+  </section>
+
+  <!-- HORIZONTAL GALLERY -->
+  <section class="horizontal-gallery">
+    <div class="gallery-track">
+      <img src="assets/images/WhatsApp Image 2026-07-16 at 9.29.45 PM.jpeg" alt="ZooLoop Milestone 1">
+      <img src="assets/images/WhatsApp Image 2026-07-16 at 9.29.46 PM.jpeg" alt="ZooLoop Milestone 2">
+      <img src="assets/images/WhatsApp Image 32026-07-16 at 9.29.48 PM.jpeg" alt="ZooLoop Milestone 3">
+      <img src="assets/images/WhatsApp Image1 2026-07-16 at 9.29.46 PM.jpeg" alt="ZooLoop Milestone 4">
+      <img src="assets/images/WhatsApp Image2 2026-07-16 at 9.29.47 PM.jpeg" alt="ZooLoop Milestone 5">
+      <img src="assets/images/WhatsApp Image4 2026-07-16 at 9.29.48 PM.jpeg" alt="ZooLoop Milestone 6">
+      <!-- Loop duplicate -->
+      <img src="assets/images/WhatsApp Image 2026-07-16 at 9.29.45 PM.jpeg" alt="ZooLoop Milestone 1">
+      <img src="assets/images/WhatsApp Image 2026-07-16 at 9.29.46 PM.jpeg" alt="ZooLoop Milestone 2">
+      <img src="assets/images/WhatsApp Image 32026-07-16 at 9.29.48 PM.jpeg" alt="ZooLoop Milestone 3">
+      <img src="assets/images/WhatsApp Image1 2026-07-16 at 9.29.46 PM.jpeg" alt="ZooLoop Milestone 4">
+      <img src="assets/images/WhatsApp Image2 2026-07-16 at 9.29.47 PM.jpeg" alt="ZooLoop Milestone 5">
+      <img src="assets/images/WhatsApp Image4 2026-07-16 at 9.29.48 PM.jpeg" alt="ZooLoop Milestone 6">
+    </div>
+  </section>
+
+  <!-- SHOWCASE RECOGNITION -->
+  <section class="achievement-showcase">
+    <div class="showcase-image">
+      <img src="assets/images/WhatsApp Image 32026-07-16 at 9.29.48 PM.jpeg" alt="ZooLoop DIR-V Recognition">
+    </div>
+
+    <div class="showcase-content">
+      <span>Key Recognition</span>
+      <h2>2nd Digital India RISC-V (DIR-V) Hackathon 2025</h2>
+      <p>
+        ZooLoop successfully participated in the National Entrepreneurship Challenge and showcased groundbreaking indigenous solutions for smart pet healthcare monitoring.
+      </p>
+      <p>
+        The recognition was presented by <strong class="highlight-name">Prof. V. Kamakoti</strong>, Director of IIT Madras, a prominent leader in India’s semiconductor and indigenous computing initiatives, and <strong class="highlight-name">Shri Rajeev Chandrasekhar</strong>, former Union Minister of State for Electronics & Information Technology.
+      </p>
+    </div>
+  </section>
+
+  <!-- BENTO MILESTONES -->
+  <section class="bento-section">
+    <h2>Journey & Milestones</h2>
+
+    <div class="bento-achievements">
+      <div class="bento-card large">
+        <span class="icon">🏆</span>
+        <h3>Startup Founded</h3>
+        <p>ZooLoop was established with a vision to transform pet care through intelligent monitoring, embedded electronics, and AI-powered health algorithms.</p>
+      </div>
+
+      <div class="bento-card">
+        <span class="icon">👨‍💻</span>
+        <h3>Multi-Talented Team</h3>
+        <p>Built a dedicated team of engineers, firmware designers, and product testing specialists.</p>
+      </div>
+
+      <div class="bento-card wide">
+        <span class="icon">💡</span>
+        <h3>Product Architecture & Prototyping</h3>
+        <p>Successfully conceptualized and engineered the ZooLoop Smart Pet Monitoring System with advanced physiological sensing and multi-device cloud synchronization.</p>
+      </div>
+
+      <div class="bento-card">
+        <span class="icon">🚀</span>
+        <h3>Future Innovation</h3>
+        <p>Actively developing next-generation pet health technologies focused on preventative diagnostics and pet wellness.</p>
+      </div>
+
+      <div class="bento-card large">
+        <span class="icon">🌍</span>
+        <h3>Global Vision</h3>
+        <p>Committed to creating connected pet healthcare solutions accessible and trusted by pet parents across the globe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-name">ZooLoop</span>
+          <p>Smart pet healthcare monitoring — built in Tamil Nadu, trusted everywhere pets are loved.</p>
+          <div class="social-row">
+            <a href="https://www.instagram.com/_zooloop_?igsh=MXNkbmNyeTI0b3lxbQ==" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/z00l00p/" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/919003569857" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><strong>Location</strong><br>Natham, Dindigul, Tamil Nadu, India</p>
+          <p style="margin-top:12px;"><strong>Phone</strong><br>+91 90035 69857</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 ZooLoop. All rights reserved.</p>
+        <p class="footer-tagline">Because every bark, step, and heartbeat tells a story.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/nav.js"></script>
+</body>
+
+</html>

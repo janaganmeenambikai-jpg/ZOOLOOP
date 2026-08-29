@@ -1,0 +1,38 @@
+/* ============================================================
+   ZooLoop — Circle Reveal Page Transition
+   Shared across all pages: index, about, product,
+   product-details, achievements, contact
+   ============================================================ */
+
+.circle-transition-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0d0d0d;
+    z-index: 999999;
+    pointer-events: none;
+
+    /* Position of the circle's center — set dynamically via JS */
+    --cx: 50%;
+    --cy: 50%;
+
+    clip-path: circle(0% at var(--cx) var(--cy));
+    -webkit-clip-path: circle(0% at var(--cx) var(--cy));
+}
+
+.circle-transition-overlay.is-animating {
+    transition: clip-path 0.4s cubic-bezier(.4, 0, .2, 1),
+                -webkit-clip-path 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* "covered" = circle has grown to swallow the whole viewport */
+.circle-transition-overlay.is-covered {
+    clip-path: circle(150% at var(--cx) var(--cy));
+    -webkit-clip-path: circle(150% at var(--cx) var(--cy));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .circle-transition-overlay,
+    .circle-transition-overlay.is-animating {
+        transition: none !important;
+    }
+}
